@@ -5,8 +5,6 @@ import Footer from "./Footer";
 import "./App.css";
 
 function App() {
-	const [active, setActive] = useState("mergeSort");
-
 	return (
 		<div>
 			<div className="page__container">
