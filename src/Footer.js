@@ -1,11 +1,28 @@
 import React from "react";
 import "./Footer.css";
-function Footer() {
+
+function Footer({ setID, setState }) {
 	return (
 		<div className="footer__wrapper">
-			<div className="button">Quick Sort</div>
+			<div
+				onClick={() => {
+					setState("Quick Sort");
+					setID(Math.random().toString());
+				}}
+				className="button"
+			>
+				Quick Sort
+			</div>
 
-			<div className="button">Merge Sort</div>
+			<div
+				onClick={() => {
+					setState("Merge Sort");
+					setID(Math.random().toString());
+				}}
+				className="button"
+			>
+				Merge Sort
+			</div>
 		</div>
 	);
 }
