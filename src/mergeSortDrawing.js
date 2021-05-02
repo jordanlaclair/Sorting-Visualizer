@@ -1,8 +1,34 @@
 export default function sketch(p) {
-	let numOfRects = 120;
-	let rectWidth;
+	p.slider = p.createSlider(30, 200, 100);
+	p.slider.position(10, 10);
+	p.slider.style("width", "20rem");
+	p.slider.mousePressed(() => {
+		mouseIsDragged = true;
+	});
 	let data = [];
-	let startSort = true;
+	let numOfRects = 16;
+	let rectWidth;
+	let startSort = false;
+	var mouseIsDragged = false;
+
+	p.slider.mouseMoved(() => {
+		if (mouseIsDragged) {
+			numOfRects = p.slider.value();
+			rectWidth = p.floor(p.width / numOfRects);
+			data = new Array(p.floor(p.width / rectWidth));
+			for (let i = 0; i < data.length; i++) {
+				data[i] = p.random(p.height);
+			}
+			p.setup();
+			p.draw();
+			p.sleep();
+		}
+	});
+
+	p.slider.mouseReleased(() => {
+		mouseIsDragged = false;
+		p.slider.hide();
+	});
 
 	p.setup = async () => {
 		p.noLoop();
@@ -12,42 +38,47 @@ export default function sketch(p) {
 
 		canvas.mousePressed(function () {
 			p.loop();
+			startSort = true;
 		});
 	};
 
-	p.draw = () => {
-		let mergeSort = async (a) => {
-			p.copy = a.slice();
-			mergeSortSlice(p.copy, 0, p.copy.length);
-			return;
-		};
+	let mergeSort = async (a) => {
+		p.copy = a.slice();
+		mergeSortSlice(p.copy, 0, p.copy.length);
+		return;
+	};
 
-		let mergeSortSlice = async (a, start, end) => {
-			if (end - start <= 1) return;
+	let mergeSortSlice = async (a, start, end) => {
+		if (end - start <= 1) return;
 
-			var mid = Math.round((end + start) / 2);
+		var mid = Math.round((end + start) / 2);
 
-			await mergeSortSlice(a, start, mid);
-			await mergeSortSlice(a, mid, end);
+		await mergeSortSlice(a, start, mid);
+		await mergeSortSlice(a, mid, end);
 
-			let i = start,
-				j = mid;
-			while (i < end && j < end) {
-				if (a[i] > a[j]) {
-					let t = a[j];
-					a.splice(j, 1);
-					a.splice(i, 0, t);
-					j++;
-				}
-				i++;
-				if (i === j) j++;
-
-				data = a.slice();
-
-				await p.sleep(25);
+		let i = start,
+			j = mid;
+		while (i < end && j < end) {
+			if (a[i] > a[j]) {
+				let t = a[j];
+				a.splice(j, 1);
+				a.splice(i, 0, t);
+				j++;
 			}
-		};
+			i++;
+			if (i === j) j++;
 
+			data = a.slice();
+
+			await p.sleep(25);
+		}
+
+		if (start === 0 && end === a.length) {
+			p.slider.show();
+		}
+	};
+
+	p.draw = () => {
 		if (startSort) {
 			startSort = false;
 

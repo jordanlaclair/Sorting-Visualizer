@@ -1,10 +1,32 @@
 export default function sketch(p) {
 	let data = [];
+
 	let w = 16;
 	let colorState = [];
+	var mouseIsDragged = false;
+	p.slider = p.createSlider(5, 50, 16);
+	p.slider.position(10, 10);
+	p.slider.style("width", "20rem");
+	p.slider.mousePressed(() => {
+		mouseIsDragged = true;
+	});
+
+	p.slider.mouseMoved(() => {
+		if (mouseIsDragged) {
+			w = p.slider.value();
+			p.setup();
+			p.draw();
+			p.sleep();
+		}
+	});
+
+	p.slider.mouseReleased(() => {
+		mouseIsDragged = false;
+	});
 
 	p.setup = async () => {
 		const canvas = p.createCanvas(p.windowWidth, 800);
+
 		data = new Array(p.floor(p.width / w));
 		for (let i = 0; i < data.length; i++) {
 			data[i] = p.random(p.height);
