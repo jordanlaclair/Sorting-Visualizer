@@ -3,3 +3,21 @@
 	flex-direction: column;
 	min-height: 100vh;
 }
+.merge__header {
+	position: absolute;
+	left: 50%;
+	top: 40%;
+	transform: translate(-50%, -50%);
+	color: red;
+}
+
+.slider {
+	position: absolute;
+	z-index: 4;
+	top: 1.4vh;
+	left: 41.5vw;
+	height: 1.2vh;
+	width: 18vw;
+	background-color: white;
+	opacity: 0;
+}

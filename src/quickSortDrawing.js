@@ -4,7 +4,7 @@ export default function sketch(p) {
 	let w = 16;
 	let colorState = [];
 	var mouseIsDragged = false;
-	p.slider = p.createSlider(5, 50, 16);
+	p.slider = p.createSlider(-50, -5, -16);
 	p.slider.position(10, 10);
 	p.slider.style("width", "20rem");
 	p.slider.mousePressed(() => {
@@ -13,7 +13,7 @@ export default function sketch(p) {
 
 	p.slider.mouseMoved(() => {
 		if (mouseIsDragged) {
-			w = p.slider.value();
+			w = Math.abs(p.slider.value());
 			p.setup();
 			p.draw();
 			p.sleep();
@@ -32,6 +32,7 @@ export default function sketch(p) {
 			data[i] = p.random(p.height);
 			colorState[i] = -1;
 		}
+
 		quickSort(data, 0, data.length - 1);
 		canvas.mousePressed(function () {
 			p.loop();

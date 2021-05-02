@@ -1,6 +1,6 @@
 export default function sketch(p) {
 	p.slider = p.createSlider(30, 200, 100);
-	p.slider.position(10, 10);
+	p.slider.position(800, 10);
 	p.slider.style("width", "20rem");
 	p.slider.mousePressed(() => {
 		mouseIsDragged = true;
@@ -24,21 +24,19 @@ export default function sketch(p) {
 			p.sleep();
 		}
 	});
-
 	p.slider.mouseReleased(() => {
 		mouseIsDragged = false;
 		p.slider.hide();
+		startSort = true;
 	});
 
 	p.setup = async () => {
 		p.noLoop();
 		const canvas = p.createCanvas(p.windowWidth, 800);
-
 		p.frameRate(60);
 
 		canvas.mousePressed(function () {
 			p.loop();
-			startSort = true;
 		});
 	};
 
@@ -70,7 +68,7 @@ export default function sketch(p) {
 
 			data = a.slice();
 
-			await p.sleep(25);
+			await p.sleep(15);
 		}
 
 		if (start === 0 && end === a.length) {
