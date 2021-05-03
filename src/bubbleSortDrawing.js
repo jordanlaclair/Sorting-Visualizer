@@ -1,5 +1,5 @@
 export default function sketch(p) {
-	p.slider = p.createSlider(20, 50, 20);
+	p.slider = p.createSlider(-50, -5, -10);
 	p.slider.position(800, 10);
 	p.slider.style("width", "20rem");
 	p.slider.mousePressed(() => {
@@ -7,13 +7,13 @@ export default function sketch(p) {
 	});
 
 	let values = [];
-	let w = 50;
+	let w = 10;
 	let i = 0;
 	var mouseIsDragged = false;
 
 	p.slider.mouseMoved(() => {
 		if (mouseIsDragged) {
-			w = p.slider.value();
+			w = Math.abs(p.slider.value());
 			p.setup();
 			p.draw();
 			p.sleep();
@@ -24,12 +24,10 @@ export default function sketch(p) {
 		mouseIsDragged = false;
 	});
 
-	p.setup = async () => {
-		p.noLoop();
-
+	p.setup = () => {
 		const canvas = p.createCanvas(p.windowWidth, 800);
 
-		values = new Array(p.floor(w));
+		values = new Array(p.floor(p.width / w));
 		for (let i = 0; i < values.length; i++) {
 			values[i] = p.random(p.height);
 			//values[i] = noise(i/100.0)*height;
@@ -38,6 +36,8 @@ export default function sketch(p) {
 		canvas.mousePressed(function () {
 			p.loop();
 		});
+
+		p.noLoop();
 	};
 
 	p.draw = () => {

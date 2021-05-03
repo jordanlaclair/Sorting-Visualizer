@@ -68,7 +68,7 @@ export default function sketch(p) {
 
 			data = a.slice();
 
-			await p.sleep(15);
+			await p.sleep(7);
 		}
 
 		if (start === 0 && end === a.length) {
