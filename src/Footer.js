@@ -24,6 +24,15 @@ function Footer({ setID, setState, setStateHeader }) {
 			>
 				Merge Sort
 			</div>
+			<div
+				onClick={() => {
+					setState("Bubble Sort");
+					setID(Math.random().toString());
+				}}
+				className="button"
+			>
+				Bubble Sort
+			</div>
 		</div>
 	);
 }

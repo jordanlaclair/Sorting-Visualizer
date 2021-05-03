@@ -3,6 +3,7 @@ import P5Wrapper from "react-p5-wrapper";
 import mergeSortDrawing from "./mergeSortDrawing";
 import MergeSortHeading from "./MergeSortHeading";
 import quickSortDrawing from "./quickSortDrawing";
+import bubbleSortDrawing from "./bubbleSortDrawing";
 
 import Footer from "./Footer";
 import "./App.css";
@@ -39,9 +40,11 @@ function App() {
 
 						<P5Wrapper key={id} sketch={mergeSortDrawing}></P5Wrapper>
 					</div>
-				) : (
+				) : state === "Quick Sort" ? (
 					<P5Wrapper key={id} sketch={quickSortDrawing}></P5Wrapper>
-				)}
+				) : state === "Bubble Sort" ? (
+					<P5Wrapper key={id} sketch={bubbleSortDrawing}></P5Wrapper>
+				) : null}
 
 				<Footer
 					setState={setState}

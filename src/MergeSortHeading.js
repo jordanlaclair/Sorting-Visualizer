@@ -8,7 +8,7 @@ function MergeSortHeading({ setSliderState }) {
 			<div className="heading__wrapper">
 				<div class="heading">Merge Sort Visualizer</div>
 
-				<div class="subheading">Drag slider to start!</div>
+				<div class="subheading">Drag slider to start and change size!</div>
 			</div>
 		</div>
 	);

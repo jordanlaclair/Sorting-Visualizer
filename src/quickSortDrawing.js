@@ -5,7 +5,7 @@ export default function sketch(p) {
 	let colorState = [];
 	var mouseIsDragged = false;
 	p.slider = p.createSlider(-50, -5, -16);
-	p.slider.position(10, 10);
+	p.slider.position(800, 10);
 	p.slider.style("width", "20rem");
 	p.slider.mousePressed(() => {
 		mouseIsDragged = true;
@@ -86,11 +86,11 @@ export default function sketch(p) {
 		for (let i = 0; i < data.length; i++) {
 			//for pivot
 			if (colorState[i] === 0) {
-				p.fill("#E0777D");
+				p.fill("#F46B73");
 
 				//for unsorted
 			} else if (colorState[i] === 1) {
-				p.fill("#D6FFB7");
+				p.fill("#D5F7BC");
 			} else {
 				//for sorted
 				p.fill(255);
