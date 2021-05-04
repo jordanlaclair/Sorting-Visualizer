@@ -26,6 +26,15 @@ function Footer({ setID, setState, setStateHeader }) {
 			</div>
 			<div
 				onClick={() => {
+					setState("Home");
+					setID(Math.random().toString());
+				}}
+				className="button"
+			>
+				Home
+			</div>
+			<div
+				onClick={() => {
 					setState("Bubble Sort");
 					setID(Math.random().toString());
 				}}

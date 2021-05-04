@@ -1,18 +1,20 @@
 import React from "react";
 import "./VisualizerHeading.css";
 
-function VisualizerHeading({ setSliderState }) {
-	setSliderState(true);
+function VisualizerHeading() {
 	return (
 		<div>
 			<div className="heading__wrapper">
-				<div class="heading">Sorting Algorithm Visualizer</div>
-
-				<div class="subheading">
-					To change size, drag slider. To start, click on the visual or drag
-					slider.
+				<div>Sorting Algorithm Visualizer</div>
+				<div className="subheading__wrapper">
+					<div className="subheading">
+						To change size, drag slider. To start, click on the sort and then
+						click on the visual.
+					</div>
+					<div className="subheading">
+						Click a sort heaing again to randomize!
+					</div>
 				</div>
-				<div class="subheading">Click the sort heaing again to randomize!</div>
 			</div>
 		</div>
 	);

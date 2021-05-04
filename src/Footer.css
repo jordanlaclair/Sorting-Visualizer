@@ -1,11 +1,17 @@
 .footer__wrapper {
+	margin-top: auto;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
+	border-width: 0px;
+	border-top-width: 8px;
+	border-style: solid;
+	border-color: black;
 }
 
 .button {
+	margin-bottom: 3rem;
 	font-size: 1.5rem;
 	cursor: pointer;
 	margin-top: 2.8rem;
