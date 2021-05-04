@@ -30,7 +30,6 @@ export default function sketch(p) {
 		values = new Array(p.floor(p.width / w));
 		for (let i = 0; i < values.length; i++) {
 			values[i] = p.random(p.height);
-			//values[i] = noise(i/100.0)*height;
 		}
 
 		canvas.mousePressed(function () {
@@ -41,18 +40,23 @@ export default function sketch(p) {
 	};
 
 	p.draw = () => {
-		p.background(0);
 		i = 0;
+
 		if (i < values.length) {
 			for (let j = 0; j < values.length - i - 1; j++) {
 				let a = values[j];
+
 				let b = values[j + 1];
+
 				if (a > b) {
 					p.swap(values, j, j + 1);
 				}
 			}
 		}
+
 		i++;
+
+		p.background(22);
 
 		for (let i = 0; i < values.length; i++) {
 			p.rect(i * w, p.height - values[i], w, values[i]);

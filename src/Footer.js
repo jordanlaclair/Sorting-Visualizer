@@ -33,6 +33,15 @@ function Footer({ setID, setState, setStateHeader }) {
 			>
 				Bubble Sort
 			</div>
+			<div
+				onClick={() => {
+					setState("Heap Sort");
+					setID(Math.random().toString());
+				}}
+				className="button"
+			>
+				Heap Sort
+			</div>
 		</div>
 	);
 }

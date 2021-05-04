@@ -1,4 +1,6 @@
 export default function sketch(p) {
+	let colorState = [];
+
 	p.slider = p.createSlider(30, 200, 100);
 	p.slider.position(800, 10);
 	p.slider.style("width", "20rem");
@@ -56,6 +58,9 @@ export default function sketch(p) {
 
 		let i = start,
 			j = mid;
+
+		colorState[j] = 0;
+
 		while (i < end && j < end) {
 			if (a[i] > a[j]) {
 				let t = a[j];
@@ -84,6 +89,7 @@ export default function sketch(p) {
 			data = new Array(Math.floor(p.width / rectWidth));
 			for (let i = 0; i < data.length; i++) {
 				data[i] = p.random(p.height);
+				colorState[i] = -1;
 			}
 
 			mergeSort(data);
@@ -91,8 +97,14 @@ export default function sketch(p) {
 
 		p.background(22);
 		p.stroke(0);
-		p.fill(255);
 		for (let i = 0; i < data.length; i++) {
+			if (colorState[i] === 0) {
+				//sorted
+				p.fill("#D5F7BC");
+			} else {
+				//unsorted
+				p.fill(255);
+			}
 			p.rect(i * rectWidth, p.height - data[i], rectWidth, data[i]);
 		}
 	};
