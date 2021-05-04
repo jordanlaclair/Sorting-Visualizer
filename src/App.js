@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import P5Wrapper from "react-p5-wrapper";
 import mergeSortDrawing from "./mergeSortDrawing";
-import MergeSortHeading from "./MergeSortHeading";
+import VisualizerHeading from "./VisualizerHeading";
 import quickSortDrawing from "./quickSortDrawing";
 import bubbleSortDrawing from "./bubbleSortDrawing";
 import heapSortDrawing from "./heapSortDrawing";
@@ -35,7 +35,7 @@ function App() {
 						</div>
 						<div className="merge__header">
 							{stateHeader === true ? (
-								<MergeSortHeading setSliderState={setSliderState} />
+								<VisualizerHeading setSliderState={setSliderState} />
 							) : null}
 						</div>
 
