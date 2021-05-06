@@ -1,7 +1,7 @@
 import React from "react";
 import "./Footer.css";
 
-function Footer({ setID, setState, setStateHeader }) {
+function Footer({ setID, setState, setMergeHeaderState }) {
 	return (
 		<div className="footer__wrapper">
 			<div
@@ -18,6 +18,7 @@ function Footer({ setID, setState, setStateHeader }) {
 				onClick={() => {
 					setState("Merge Sort");
 					setID(Math.random().toString());
+					setMergeHeaderState(true);
 				}}
 				className="button"
 			>

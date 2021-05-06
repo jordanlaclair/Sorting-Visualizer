@@ -3,10 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { MergeHeaderProvider } from "./MergeHeaderContext";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<MergeHeaderProvider>
+			<App />
+		</MergeHeaderProvider>
 	</React.StrictMode>,
 	document.getElementById("root")
 );

@@ -1,7 +1,9 @@
-export default function sketch(p) {
+function sketch(p) {
 	let colorState = [];
 
 	p.slider = p.createSlider(30, 200, 100);
+	let slider = p.slider;
+	slider.parent("myContainer");
 	p.slider.position(800, 10);
 	p.slider.style("width", "20rem");
 	p.slider.mousePressed(() => {
@@ -105,7 +107,7 @@ export default function sketch(p) {
 
 			data = a.slice();
 
-			await p.sleep(15);
+			await p.sleep(7);
 		}
 
 		if (start === 0 && end === a.length) {
@@ -145,3 +147,4 @@ export default function sketch(p) {
 		return new Promise((resolve) => setTimeout(resolve, ms));
 	};
 }
+export default sketch;
