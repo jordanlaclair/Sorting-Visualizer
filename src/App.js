@@ -11,27 +11,12 @@ import "./App.css";
 function App() {
 	const [id, setID] = useState("123");
 	const [state, setState] = useState("Home");
-	const [stateHeader, setStateHeader] = useState(true);
-	const [sliderState, setSliderState] = useState(true);
-
-	let removeHeader = (e) => {
-		e.preventDefault();
-		setStateHeader(false);
-		setSliderState(false);
-	};
 
 	return (
 		<div>
 			<div className="page__container">
 				{state === "Merge Sort" ? (
 					<div>
-						<div
-							onMouseOver={removeHeader}
-							style={sliderState === false ? { display: "none" } : null}
-							className="slider"
-						>
-							1
-						</div>
 						<P5Wrapper key={id} sketch={mergeSortDrawing}></P5Wrapper>
 					</div>
 				) : state === "Quick Sort" ? (
@@ -46,11 +31,7 @@ function App() {
 					<P5Wrapper key={id} sketch={heapSortDrawing}></P5Wrapper>
 				) : null}
 
-				<Footer
-					setState={setState}
-					setStateHeader={setStateHeader}
-					setID={setID}
-				/>
+				<Footer setState={setState} setID={setID} />
 			</div>
 		</div>
 	);

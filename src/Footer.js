@@ -17,7 +17,6 @@ function Footer({ setID, setState, setStateHeader }) {
 			<div
 				onClick={() => {
 					setState("Merge Sort");
-					setStateHeader(true);
 					setID(Math.random().toString());
 				}}
 				className="button"

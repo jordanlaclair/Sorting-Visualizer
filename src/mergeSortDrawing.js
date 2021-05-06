@@ -7,39 +7,71 @@ export default function sketch(p) {
 	p.slider.mousePressed(() => {
 		mouseIsDragged = true;
 	});
+	let canvas;
 	let data = [];
-	let numOfRects = 16;
+	let numOfRects = 100;
 	let rectWidth;
 	let startSort = false;
 	var mouseIsDragged = false;
 
-	p.slider.mouseMoved(() => {
-		if (mouseIsDragged) {
-			numOfRects = p.slider.value();
-			rectWidth = p.floor(p.width / numOfRects);
-			data = new Array(p.floor(p.width / rectWidth));
+	if (startSort == true) {
+		p.start = () => {
+			rectWidth = Math.floor(p.width / numOfRects);
+			data = new Array(Math.floor(p.width / rectWidth));
 			for (let i = 0; i < data.length; i++) {
 				data[i] = p.random(p.height);
+				colorState[i] = -1;
 			}
+
+			mergeSort(data);
+			p.background(22);
+			p.stroke(0);
+			for (let i = 0; i < data.length; i++) {
+				if (colorState[i] === 0) {
+					//sorted
+					p.fill("#D5F7BC");
+				} else {
+					//unsorted
+					p.fill(255);
+				}
+				p.rect(i * rectWidth, p.height - data[i], rectWidth, data[i]);
+			}
+		};
+	}
+
+	p.slider.mouseReleased(() => {
+		startSort = true;
+		mouseIsDragged = false;
+		p.slider.hide();
+	});
+
+	p.slider.mouseMoved(() => {
+		if (mouseIsDragged) {
+			data = [];
+			colorState = [];
+			canvas = 0;
+			rectWidth = 0;
+			numOfRects = p.slider.value();
+			rectWidth = Math.floor(p.width / numOfRects);
+			data = new Array(Math.floor(p.width / rectWidth));
+			for (let i = 0; i < data.length; i++) {
+				data[i] = p.random(p.height);
+				colorState[i] = -1;
+			}
+
 			p.setup();
 			p.draw();
 			p.sleep();
 		}
 	});
-	p.slider.mouseReleased(() => {
-		mouseIsDragged = false;
-		p.slider.hide();
-		startSort = true;
-	});
 
 	p.setup = async () => {
-		p.noLoop();
-		const canvas = p.createCanvas(p.windowWidth, 800);
-		p.frameRate(60);
+		canvas = p.createCanvas(p.windowWidth, 800);
 
 		canvas.mousePressed(function () {
 			p.loop();
 		});
+		p.noLoop();
 	};
 
 	let mergeSort = async (a) => {
@@ -73,7 +105,7 @@ export default function sketch(p) {
 
 			data = a.slice();
 
-			await p.sleep(7);
+			await p.sleep(15);
 		}
 
 		if (start === 0 && end === a.length) {
