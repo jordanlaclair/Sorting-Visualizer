@@ -15,6 +15,8 @@ export default function sketch(p) {
 
 	p.slider.mouseMoved(() => {
 		if (mouseIsDragged) {
+			data = [];
+			colorState = [];
 			w = Math.abs(p.slider.value());
 			p.setup();
 			p.draw();
@@ -53,11 +55,13 @@ export default function sketch(p) {
 			colorState[i] = -1;
 		}
 
-		quickSort(data, 0, data.length - 1);
 		canvas.mousePressed(function () {
+			p.setup();
+			p.draw();
+			p.sleep();
 			p.loop();
 		});
-
+		quickSort(data, 0, data.length - 1);
 		p.noLoop();
 	};
 
