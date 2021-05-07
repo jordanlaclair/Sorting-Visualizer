@@ -1,15 +1,16 @@
 export default function sketch(p) {
 	p.slider = p.createSlider(-50, -5, -10);
-	p.slider.position(800, 10);
-	p.slider.style("width", "20rem");
-	p.slider.mousePressed(() => {
-		mouseIsDragged = true;
-	});
+	p.slider.position(20, 10);
+	p.slider.style("width", "10rem");
 
 	let values = [];
 	let w = 10;
 	let i = 0;
 	var mouseIsDragged = false;
+
+	p.slider.mousePressed(() => {
+		mouseIsDragged = true;
+	});
 
 	p.slider.mouseMoved(() => {
 		if (mouseIsDragged) {
@@ -21,6 +22,24 @@ export default function sketch(p) {
 	});
 
 	p.slider.mouseReleased(() => {
+		mouseIsDragged = false;
+	});
+
+	//these three functions are for mobile
+	p.slider.touchStarted(() => {
+		mouseIsDragged = true;
+	});
+
+	p.slider.touchMoved(() => {
+		if (mouseIsDragged) {
+			w = Math.abs(p.slider.value());
+			p.setup();
+			p.draw();
+			p.sleep();
+		}
+	});
+
+	p.slider.touchEnded(() => {
 		mouseIsDragged = false;
 	});
 

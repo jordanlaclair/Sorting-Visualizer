@@ -5,7 +5,8 @@ function Footer({ setID, setState, setMergeHeaderState }) {
 	return (
 		<div className="footer__wrapper">
 			<div
-				onClick={() => {
+				onClick={(e) => {
+					e.preventDefault();
 					setState("Quick Sort");
 					setID(Math.random().toString());
 				}}
@@ -15,7 +16,8 @@ function Footer({ setID, setState, setMergeHeaderState }) {
 			</div>
 
 			<div
-				onClick={() => {
+				onClick={(e) => {
+					e.preventDefault();
 					setState("Merge Sort");
 					setID(Math.random().toString());
 					setMergeHeaderState(true);
@@ -25,7 +27,8 @@ function Footer({ setID, setState, setMergeHeaderState }) {
 				Merge Sort
 			</div>
 			<div
-				onClick={() => {
+				onClick={(e) => {
+					e.preventDefault();
 					setState("Home");
 					setID(Math.random().toString());
 				}}
@@ -34,7 +37,8 @@ function Footer({ setID, setState, setMergeHeaderState }) {
 				Home
 			</div>
 			<div
-				onClick={() => {
+				onClick={(e) => {
+					e.preventDefault();
 					setState("Bubble Sort");
 					setID(Math.random().toString());
 				}}
@@ -43,7 +47,8 @@ function Footer({ setID, setState, setMergeHeaderState }) {
 				Bubble Sort
 			</div>
 			<div
-				onClick={() => {
+				onClick={(e) => {
+					e.preventDefault();
 					setState("Heap Sort");
 					setID(Math.random().toString());
 				}}

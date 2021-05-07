@@ -10,12 +10,7 @@
 	transform: translate(-50%, -50%);
 	color: white;
 }
-.home__header {
-	position: absolute;
-	left: 50%;
-	top: 40%;
-	transform: translate(-50%, -50%);
-}
+
 .merge__header__wrapper {
 	z-index: 4;
 	font-size: 4rem;

@@ -5,8 +5,10 @@ export default function sketch(p) {
 	let colorState = [];
 	var mouseIsDragged = false;
 	p.slider = p.createSlider(-50, -5, -16);
-	p.slider.position(800, 10);
-	p.slider.style("width", "20rem");
+	p.slider.position(20, 10);
+	p.slider.style("width", "10rem");
+
+	//these three functions are for desktop
 	p.slider.mousePressed(() => {
 		mouseIsDragged = true;
 	});
@@ -21,6 +23,24 @@ export default function sketch(p) {
 	});
 
 	p.slider.mouseReleased(() => {
+		mouseIsDragged = false;
+	});
+
+	//these three functions are for mobile
+	p.slider.touchStarted(() => {
+		mouseIsDragged = true;
+	});
+
+	p.slider.touchMoved(() => {
+		if (mouseIsDragged) {
+			w = Math.abs(p.slider.value());
+			p.setup();
+			p.draw();
+			p.sleep();
+		}
+	});
+
+	p.slider.touchEnded(() => {
 		mouseIsDragged = false;
 	});
 

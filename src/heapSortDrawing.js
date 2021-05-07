@@ -9,8 +9,8 @@ export default function sketch(p) {
 	var mouseIsDragged = false;
 
 	p.slider = p.createSlider(200, 1000, 250);
-	p.slider.position(800, 10);
-	p.slider.style("width", "20rem");
+	p.slider.position(20, 10);
+	p.slider.style("width", "10rem");
 	p.slider.mousePressed(() => {
 		mouseIsDragged = true;
 	});
@@ -22,13 +22,34 @@ export default function sketch(p) {
 			complete = false;
 			colorsState = [];
 			data = [];
-			let q;
-			let s;
+
 			p.setup();
 			p.draw();
 		}
 	});
 	p.slider.mouseReleased(() => {
+		mouseIsDragged = false;
+		p.slider.hide();
+	});
+
+	//these three functions are for mobile
+	p.slider.touchStarted(() => {
+		mouseIsDragged = true;
+	});
+
+	p.slider.touchMoved(() => {
+		if (mouseIsDragged) {
+			i = p.slider.value();
+			begin = false;
+			complete = false;
+			colorsState = [];
+			data = [];
+
+			p.setup();
+			p.draw();
+		}
+	});
+	p.slider.touchEnded(() => {
 		mouseIsDragged = false;
 		p.slider.hide();
 	});
@@ -92,7 +113,7 @@ export default function sketch(p) {
 			largest = right;
 		}
 		// if max is not root
-		if (largest != index) {
+		if (largest !== index) {
 			p.swap(largest, index);
 			// recursively heapify the affected sub-tree
 			p.maxHeapify(largest);
@@ -114,7 +135,7 @@ export default function sketch(p) {
 		let horizontalRes = p.width / data.length;
 		for (let j = 0; j < data.length; j++) {
 			const item = data[j];
-			if (j == 0) {
+			if (j === 0) {
 				const color = colorsState[0];
 				p.fill(color.r, color.g, color.b);
 			} else if (j < i) {
