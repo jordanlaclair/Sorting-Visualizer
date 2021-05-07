@@ -5,7 +5,7 @@ This includes popular sorting algorithms like merge sort, quick sort, bubble sor
 
 ## Live Version
 
-(sorting-algorithm-visual-bdd93.web.app)
+[Live link](https://sorting-algorithm-visual-bdd93.web.app/)
 
 ## Technologies
 
